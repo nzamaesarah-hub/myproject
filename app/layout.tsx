@@ -1,37 +1,38 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Baloo_2, Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+// font display bulat & tebal, dipakai untuk judul-judul besar (PORTFOLIO, ABOUT ME, dst)
+const baloo = Baloo_2({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
+});
+
+// font body untuk paragraf/navbar/deskripsi
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
-  title: "My Next.js App",
-  description: "Created with Next.js",
+  title: "Nama Kamu — Portfolio",
+  description: "Personal portfolio website",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className="bg-gray-50 text-gray-900">
-        {/* Navigasi / Navbar */}
-        <nav className="bg-white shadow-md p-4 flex gap-6 justify-center">
-          <Link href="/" className="font-semibold hover:text-blue-600 transition">
-            Home
-          </Link>
-          <Link href="/profile" className="font-semibold hover:text-blue-600 transition">
-            Profile
-          </Link>
-          <Link href="/portfolio" className="font-semibold hover:text-blue-600 transition">
-            Portfolio
-          </Link>
-        </nav>
-
-        {/* Konten Halaman akan muncul di sini */}
-        <main className="p-8 max-w-4xl mx-auto">
-          {children}
-        </main>
+    <html lang="id">
+      <body className={`${baloo.variable} ${inter.variable}`}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

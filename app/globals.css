@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Definisi warna custom untuk Bright & Vibrant Light Mode */
+@theme {
+  --color-navy: #f4f7fc;       /* Background: Light Ice Blue/Gray */
+  --color-mist: #0f172a;       /* Teks utama: Dark Slate */
+  --color-panel: #ffffff;      /* Kartu / Panel: Putih */
+  --color-skyLight: #00d2ff;   /* Aksen Gradasi 1: Electric Cyan */
+  --color-sky: #3a7bd5;        /* Aksen Gradasi 2: Vibrant Blue */
+  --color-accent: #6366f1;     /* Aksen Tambahan: Indigo / Violet */
+  --font-body: var(--font-sans);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-navy text-mist font-body;
+  /* Latar belakang dinamis dengan pendaran warna cyan, indigo, dan pola grid mikro */
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(0, 210, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.15), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(58, 123, 213, 0.12), transparent 50%),
+    radial-gradient(#3a7bd5 0.75px, transparent 0.75px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
+  background-attachment: fixed;
+}
+
+/* Teks judul besar dengan gradasi Cyan ke Vibrant Blue */
+.gradient-text {
+  @apply bg-linear-to-r from-skyLight via-sky to-accent bg-clip-text text-transparent font-bold;
+}
+
+/* Kotak placeholder foto */
+.photo-slot {
+  @apply flex items-center justify-center rounded-2xl border-2 border-dashed border-sky/40 bg-white/70 text-center text-sm text-mist/60 backdrop-blur-sm;
+}
+
+/* Kartu panel terang dengan efek glassmorphism dan shadow berwarna */
+.panel-card {
+  @apply rounded-3xl border border-white/80 bg-white/75 shadow-xl shadow-indigo-500/5 backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/10 hover:border-skyLight/50;
 }
