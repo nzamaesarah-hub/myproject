@@ -4,10 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+// Ditambahkan link Buku Tamu ke dalam array links
 const links = [
   { href: "/", label: "Home" },
   { href: "/profile", label: "Profile" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/bukutamu", label: "Buku Tamu" },
+  {href: "/blog", label: "Blog"},
 ];
 
 export default function Navbar() {
@@ -21,7 +24,7 @@ export default function Navbar() {
           href="/"
           className="rounded-full bg-panel px-4 py-2 font-display text-sm font-semibold tracking-wide"
         >
-          Nama Kamu
+          Nzzzz
         </Link>
 
         {/* menu desktop */}
