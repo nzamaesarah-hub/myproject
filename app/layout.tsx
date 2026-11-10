@@ -18,8 +18,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nama Kamu — Portfolio",
-  description: "Personal portfolio website",
+  title: "Nahza Maesarah — Portfolio",
+  description: "Portofolio Nahza Maesarah, siswi Rekayasa Perangkat Lunak SMK Telkom Makassar.",
 };
 
 export default function RootLayout({

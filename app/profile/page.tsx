@@ -1,9 +1,14 @@
 import Image from "next/image";
 import { experiences } from "@/data/experience";
-import { strengths, traits, education, interests } from "@/data/skills";
+import { traits, education, interests } from "@/data/skills";
 import Sunburst from "@/components/Sunburst";
+import { listSkills } from "@/lib/db";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export default function ProfilePage() {
+  const skills = listSkills();
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-8">
       {/* HELLO, I'M ... */}
@@ -12,7 +17,7 @@ export default function ProfilePage() {
         {/* Bagian FOTO */}
         <div className="relative h-72 w-full flex-1 overflow-hidden rounded-3xl border border-sky/20 bg-panel/80 md:h-96">
           <Image
-            src="/Tes.jpg" // Simpan file foto kamu di folder public/profile.jpg
+            src="/nz.jpg" // Simpan file foto kamu di folder public/profile.jpg
             alt="Foto Nahza Maesarah"
             fill
             className="object-cover"
@@ -36,11 +41,11 @@ export default function ProfilePage() {
 
       {/* WHAT I DO BEST */}
       <section className="mt-20">
-        <h2 className="font-display text-4xl font-extrabold md:text-5xl">
-          Apa yang <span className="gradient-text">saya kuasai</span>
+        <h2 id="skills" className="scroll-mt-28 font-display text-4xl font-extrabold md:text-5xl">
+          Keterampilan & <span className="gradient-text">kekuatan</span>
         </h2>
         <div className="mt-8 space-y-4">
-          {strengths.map((item) => (
+          {skills.map((item: { id: number; title: string; description: string }) => (
             <div key={item.title} className="panel-card flex items-start gap-4 p-6">
               <Sunburst className="mt-1 h-6 w-6 shrink-0 text-sky" />
               <div>
@@ -48,6 +53,11 @@ export default function ProfilePage() {
                 <p className="mt-1 font-body text-sm text-mist/60">{item.description}</p>
               </div>
             </div>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-3" aria-label="Teknologi yang digunakan pada situs ini">
+          {["Next.js", "React", "TypeScript", "Tailwind CSS", "SQLite", "Git"].map((item) => (
+            <span key={item} className="rounded-full border border-sky/20 bg-panel px-4 py-2 text-sm text-mist/70">{item}</span>
           ))}
         </div>
       </section>

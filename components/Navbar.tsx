@@ -9,7 +9,9 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/profile", label: "Profile" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/bukutamu", label: "Buku Tamu" },
+  { href: "/sertifikat", label: "Sertifikat" },
+  { href: "/contact", label: "Kontak" },
+  { href: "/testimoni", label: "Testimoni" },
   {href: "/blog", label: "Blog"},
 ];
 
@@ -28,12 +30,12 @@ export default function Navbar() {
         </Link>
 
         {/* menu desktop */}
-        <ul className="hidden gap-1 font-body text-sm md:flex">
+        <ul className="hidden gap-0 font-body text-xs lg:gap-1 lg:text-sm md:flex">
           {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`rounded-full px-4 py-2 transition-colors ${
+                  className={`rounded-full px-2 py-2 transition-colors lg:px-3 ${
                   pathname === link.href
                     ? "bg-sky/20 text-skyLight"
                     : "text-mist/70 hover:text-mist"
@@ -46,6 +48,9 @@ export default function Navbar() {
         </ul>
 
         {/* tombol menu mobile */}
+        <div className="hidden items-center gap-2 md:flex">
+          <a href="/CV-Nahza-Maesarah.pdf" target="_blank" rel="noreferrer" className="rounded-full bg-sky px-4 py-2 text-sm font-semibold text-white hover:opacity-90">Lihat CV</a>
+        </div>
         <button
           onClick={() => setOpen(!open)}
           className="rounded-full bg-panel px-3 py-1 text-lg md:hidden"
@@ -71,6 +76,7 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+        <li><a href="/CV-Nahza-Maesarah.pdf" target="_blank" rel="noreferrer" className="block rounded-full px-4 py-2 text-mist/70">Lihat CV</a></li>
         </ul>
       )}
     </header>

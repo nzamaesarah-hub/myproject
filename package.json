@@ -2,25 +2,38 @@
   "name": "myproject",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=24.10"
+  },
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently -k -n EXPRESS,NEXT \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --env-file-if-exists=.env.local --import tsx --watch server/index.ts",
+    "dev:web": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "concurrently -k -n EXPRESS,NEXT \"npm:start:api\" \"npm:start:web\"",
+    "start:api": "node --env-file-if-exists=.env.local --import tsx server/index.ts",
+    "start:web": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "express": "^5.3.0",
+    "multer": "^2.5.0",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.7",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

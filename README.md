@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Nahza Maesarah
 
-## Getting Started
+Portofolio ini dibuat dengan Next.js, React, TypeScript, Tailwind CSS, Express, dan SQLite. Next.js menampilkan situs di port 3000. Express menangani API di port 4000, sedangkan SQLite menyimpan proyek, sertifikat, keterampilan, pesan kontak, Suka, komentar, serta testimoni.
 
-First, run the development server:
+## Menjalankan di komputer
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Perlu Node.js 24.10 atau lebih baru karena server Express memuat pengaturan `.env.local` melalui opsi Node dan database memakai SQLite bawaan Node.js.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Buka folder proyek ini di terminal.
+2. Pasang paket: `npm install`
+3. Salin `.env.example` menjadi `.env.local`.
+4. Ganti `ADMIN_PASSWORD` dengan kata sandi pilihanmu dan isi `ADMIN_SESSION_SECRET` dengan string acak panjang.
+5. Jalankan `npm run dev`. Perintah ini menyalakan Express API dan Next.js bersamaan; buka http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Untuk membuat secret acak di PowerShell: `[Convert]::ToHexString([Security.Cryptography.RandomNumberGenerator]::GetBytes(32))`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Database dibuat otomatis di `data/portfolio.sqlite` saat situs pertama kali dijalankan. File database tidak dimasukkan ke Git.
 
-## Learn More
+Permintaan `/api/...` dari situs diteruskan Next.js ke Express melalui rewrite. Untuk mencoba API langsung, buka `http://127.0.0.1:4000/api/health`; hasilnya `{ "ok": true, "service": "express-api" }`.
 
-To learn more about Next.js, take a look at the following resources:
+## Mengelola konten
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Buka `/admin` secara langsung dan masuk menggunakan `ADMIN_PASSWORD` dari `.env.local`. Tautan Admin tidak ditampilkan di Footer publik. Halaman Admin dapat menambah/mengubah/menghapus proyek, sertifikat, dan keterampilan, menyetujui atau menyembunyikan testimoni, serta menghapus pesan kontak dan komentar proyek.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Untuk proyek dan sertifikat, Admin dapat memilih gambar JPG, PNG, atau WEBP hingga 5 MB. File disimpan di `public/uploads/` dan alamat gambarnya disimpan pada database.
 
-## Deploy on Vercel
+Testimoni yang dikirim pengunjung menunggu persetujuan admin. Pesan dari formulir kontak, komentar proyek, dan jumlah Suka tersimpan di database. Pesan kontak hanya terlihat di halaman Admin; formulir tersebut belum mengirim email.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## CV
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Tautan CV membuka PDF asli yang diberikan pemilik, `public/CV-Nahza-Maesarah.pdf`.
+
+Formulir kontak hanya tersedia di halaman `/contact`; Footer global hanya menampilkan alamat email, Instagram, dan tautan ke halaman Kontak. Form testimoni tetap tersedia di `/testimoni` saja.
+
+## Catatan penerapan
+
+SQLite lokal cocok untuk tugas dan penggunaan satu komputer. Untuk menerbitkan situs ke layanan hosting, siapkan database persisten yang didukung layanan tersebut dan pindahkan variabel rahasia melalui pengaturan environment hosting. Jangan mengunggah `.env.local` atau database yang berisi pesan pribadi.

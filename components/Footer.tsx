@@ -1,4 +1,5 @@
 import Sunburst from "@/components/Sunburst";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -21,13 +22,15 @@ export default function Footer() {
         </p>
 
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <span className="rounded-full bg-panel px-5 py-3 font-body text-sm text-mist/80">
+          <a href="mailto:nzamaesarah@gmail.com" className="rounded-full bg-panel px-5 py-3 font-body text-sm text-mist/80 hover:text-sky">
             nzamaesarah@gmail.com
-          </span>
-          <span className="rounded-full bg-panel px-5 py-3 font-body text-sm text-mist/80">
+          </a>
+          <a href="https://instagram.com/_nzzzmsrh" target="_blank" rel="noreferrer" className="rounded-full bg-panel px-5 py-3 font-body text-sm text-mist/80 hover:text-sky">
             @_nzzzmsrh
-          </span>
+          </a>
         </div>
+        <Link href="/contact" className="mt-6 inline-block rounded-full border border-sky/20 px-5 py-2 text-sm text-sky hover:bg-sky/10">Kirim pesan</Link>
+        <p className="mt-6 text-xs text-mist/40">© {new Date().getFullYear()} Nahza Maesarah</p>
       </div>
     </footer>
   );

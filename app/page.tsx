@@ -4,7 +4,7 @@ import Sunburst from "@/components/Sunburst";
 export default function HomePage() {
   return (
     <div>
-      {/* HERO — judul besar bertumpuk khas tema ini */}
+      {/* HERO */}
       <section className="relative mx-auto max-w-6xl px-4 pb-9 pt-16 md:px-8 md:pt-24">
         <h1 className="font-display text-7xl font-extrabold leading-[0.95] tracking-tight sm:text-8xl md:text-9xl">
           <span className="gradient-text">About Nz</span>
@@ -27,26 +27,38 @@ export default function HomePage() {
         <div className="mt-12 flex gap-4">
           <Link
             href="/portfolio"
-            className="rounded-full bg-sky px-6 py-3 font-body text-sm font-medium text-navy"
+            className="rounded-full bg-sky px-6 py-3 font-body text-sm font-medium text-navy transition hover:opacity-90"
           >
             Lihat Portofolio
           </Link>
           <Link
             href="/profile"
-            className="rounded-full border border-sky/30 px-6 py-3 font-body text-sm font-medium text-mist"
+            className="rounded-full border border-sky/30 px-6 py-3 font-body text-sm font-medium text-mist transition hover:bg-sky/10"
           >
             Tentang Saya
           </Link>
+          <a href="/CV-Nahza-Maesarah.pdf" target="_blank" rel="noreferrer" className="rounded-full border border-sky/30 px-6 py-3 font-body text-sm font-medium text-mist transition hover:bg-sky/10">
+            Lihat CV
+          </a>
         </div>
       </section>
 
-      {/* RINGKASAN FOKUS — bagian umum, isi bebas */}
+      {/* RINGKASAN FOKUS */}
       <section className="mx-auto max-w-6xl px-4 md:px-8">
         <div className="panel-card grid gap-8 p-8 md:grid-cols-3 md:p-10">
           {[
-            { title: "Wakil Ketua Osis 1 Periode 25/26", desc: "Aktif Menjabat sebagai Wakil Ketua OSIS, terlibat dalam perencanaan, koordinasi, serta pelaksanaan berbagai program kerja dan event sekolah" },
-            { title: "Project Management", desc: "Berpengalaman memimpin tim lintas kelas sebagai Project Manager dalam pengembangan website klien, mulai dari perencanaan, pembagian tugas, hingga koordinasi desain." },
-            { title: "Finance Administration", desc: "Mengelola administrasi dan anggaran kegiatan sekolah, melakukan pencatatan transaksi, verifikasi bukti pembelian, hingga penyusunan laporan keuangan sesuai SOP sekolah." },
+            { 
+              title: "Wakil Ketua Osis 1 Periode 25/26", 
+              desc: "Aktif Menjabat sebagai Wakil Ketua OSIS, terlibat dalam perencanaan, koordinasi, serta pelaksanaan berbagai program kerja dan event sekolah" 
+            },
+            { 
+              title: "Project Management", 
+              desc: "Berpengalaman memimpin tim lintas kelas sebagai Project Manager dalam pengembangan website klien, mulai dari perencanaan, pembagian tugas, hingga koordinasi desain." 
+            },
+            { 
+              title: "Finance Administration", 
+              desc: "Mengelola administrasi dan anggaran kegiatan sekolah, melakukan pencatatan transaksi, verifikasi bukti pembelian, hingga penyusunan laporan keuangan sesuai SOP sekolah." 
+            },
           ].map((item) => (
             <div key={item.title} className="flex items-start gap-3">
               <Sunburst className="mt-1 h-6 w-6 shrink-0 text-sky" />

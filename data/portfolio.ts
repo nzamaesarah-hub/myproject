@@ -30,10 +30,12 @@ export const projects = [
     title: "Anggota Bidang 2 Osis SMK Telkom Makassar Periode 2024/2025",
     category: "Organisasi",
     year: "2024-2025",
+    image:"period2425.jpg"
   },
   {
     title: "Wakil Ketua Osis 1 SMK Telkom Makassar Periode 2025/2026",
     category: "Organisasi",
     year: "2025 - 2026",
+    image:"priod2526.jpg"
   },
 ];
